@@ -1,6 +1,7 @@
 import csv
 import random
-
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
 
 def ex1(data):
     with open(data, 'r') as file:
@@ -67,21 +68,61 @@ def ex10(data):
     except FileNotFoundError:
         print("Файл не найден. Пожалуйста, проверьте имя файла и попробуйте снова.")
 
-def ex11():
-    pass
+def ex11(data):
+    with open(data, 'rb') as file:
+        hex_content = file.read().hex()
+        print(hex_content)
 
-def ex12():
-    pass
+def ex12(data1, data2, newdata):
+    with open(data1, 'r') as file1, open(data2, 'r') as file2:
+        text1 = file1.read()
+        text2 = file2.read()
 
-def ex13():
-    pass
+    with open(newdata, 'w') as new_file:
+        new_file.write(text1 + '\n' + text2)
+        
+def ex13(data, oldword, newword):
+    with open(data, 'r') as file:
+        text = file.read()
 
-def ex14():
-    pass
+    newtext = text.replace(oldword, newword)
 
-def ex15():
-    pass
+    with open(data, 'w') as file:
+        file.write(newtext)
 
+def ex14(data, newdata):
+    with open(data, 'r') as file:
+        lines = file.readlines()
+        new_lines = []
+        for line in lines:
+            if (len(line.strip())):
+                new_lines.append(line)
+    with open(newdata, 'w') as file:
+        file.writelines(new_lines)
+
+def ex15(data, encrypted_data, decrypted_data):
+    with open(data, 'r') as file:
+        text = file.readlines()
+    
+    key = get_random_bytes(16)
+    cipher = AES.new(key, AES.MODE_EAX)
+    ciphertext = cipher.encrypt(''.join(text).encode('utf-8'))
+
+    with open(encrypted_data, 'wb') as file:
+        file.write(cipher.nonce)
+        file.write(ciphertext)
+    print(f"Файл зашифрован и сохранен в {encrypted_data}")
+
+    with open(encrypted_data, 'rb') as file:
+        nonce = file.read(16)
+        ciphertext = file.read()
+
+    with open(decrypted_data, 'w') as file:
+        cipher = AES.new(key, AES.MODE_EAX, nonce=nonce)
+        decrypted_text = cipher.decrypt(ciphertext).decode('utf-8')
+        file.write(decrypted_text)
+    print(f"Файл расшифрован и сохранен в {decrypted_data}")
+        
 
 ex1("data.txt")
 ex2("data.txt")
@@ -93,3 +134,8 @@ ex7("data.txt")
 ex8("random_numbers.txt")
 ex9("data.csv")
 ex10("non_existent_file.txt")
+ex11("test.bin")
+ex12("data.txt", "data2.txt", "combined.txt")
+ex13("data.txt", "и последняя", "уже не последняя")
+ex14("data.txt", "cleaned_data.txt")
+ex15("data.txt", "encrypted_data.bin", "decrypted_data.txt")
