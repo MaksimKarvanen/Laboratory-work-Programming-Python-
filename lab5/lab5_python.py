@@ -1,7 +1,8 @@
 import csv
 import random
-from Crypto.Cipher import AES
+from Crypto.Cipher import AES # Установить зависимости pip install -r requirements.txt
 from Crypto.Random import get_random_bytes
+
 
 def ex1(data):
     with open(data, 'r') as file:
