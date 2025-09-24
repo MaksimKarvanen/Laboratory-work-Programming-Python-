@@ -65,8 +65,8 @@ def ex13(s):
 def ex14(l):
     return [list(column) for column in zip(*l)]
     
-def ex15(l1, l2):
-    return zip(l1, l2)
+def ex15(keys, values):
+    return dict(zip(keys, values))
     
 
 print(ex1([1, 2, 2, 3, 4, 4, 5]))
@@ -82,5 +82,5 @@ print(ex10([1, [2, [3, 4], 5], 6, [7, 8]]))
 print(ex11({'a': 1, 'b': 2, 'c': 3}, 'b'))
 print(ex12("this is a test this is only a test"))
 print(ex13({1, 2, 3, 4, 5}))
-print(ex14([[1, 'a', 3.12], [2, 'b', 2.56], [3, 'c', -23.1]]))
-print(list(ex15([1, 2, 3], ['a', 'b', 'c'])))
+print(ex14([(1, 'a', 3.12), (2, 'b', 2.56), (3, 'c', -23.1)]))
+print(ex15([1, 2, 3],["a", "b", "c"]))
