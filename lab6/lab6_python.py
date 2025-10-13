@@ -7,8 +7,10 @@ class Rectangle:
     def __init__ (self, length, width):
         self.length = length
         self.width = width
+
     def area(self):
         return self.length * self.width
+    
     def perimeter(self):
         return 2 * (self.length + self.width)
 
@@ -17,6 +19,7 @@ class Student:
     def __init__(self, name, roll_number):
         self.name = name
         self.roll_number = roll_number
+
     def display(self):
         print(f"Name: {self.name}\nRoll number: {self.roll_number}")
 
@@ -25,13 +28,16 @@ class BankAccount:
     def __init__(self, id, balance=0):
         self.id = id
         self.balance = balance
+
     def deposit(self, amount):
         self.balance += amount
+
     def withdraw(self, amount):
         if amount <= self.balance:
             self.balance -= amount
         else:
             print("Недостаточно средств")
+
     def get_balance(self):
         return self.balance
 
@@ -39,6 +45,7 @@ class BankAccount:
 class Animal:
     def __init__(self, name):
         self.name = name
+
     def speak(self):
         return "Я не знаю что говорить"
 
@@ -58,8 +65,10 @@ class Shape:
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
+
     def area(self):
         return math.pi * self.radius ** 2
+    
     def perimeter(self):
         return 2 * math.pi * self.radius
     
@@ -67,8 +76,10 @@ class Rectangle(Shape):
     def __init__(self, length, width):
         self.length = length
         self.width = width
+
     def area(self):
         return self.length * self.width
+    
     def perimeter(self):
         return 2 * (self.length + self.width)
 
@@ -77,6 +88,7 @@ class Person:
     def __init__(self, name, age):
         self.name = name
         self.age = age
+
     def display(self):
         return f'Имя: {self.name}, Возраст: {self.age}'
 
@@ -84,6 +96,7 @@ class Employee(Person):
     def __init__(self, name, age, salary):
         super().__init__(name, age)
         self.salary = salary
+
     def display(self):
         base_info = super().display()
         return f'{base_info}, Зар. плата: {self.salary}'
@@ -103,6 +116,7 @@ class Complex:
 #ex8
 class Car:
     wheels = 4
+    
     def __init__(self, make, model):
         self.make = make
         self.model = model
