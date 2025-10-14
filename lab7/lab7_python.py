@@ -41,9 +41,12 @@ for line in read_file_line('test.txt'):
 
 #ex4
 def prime_numbers(n):
-    for num in range(2, n):
-        if all(num % i != 0 for i in range(2, int(num**0.5) + 1)):
-            yield num
+    for i in range(2, n+1):
+        for j in range(2, i):
+            if i % j == 0:
+                break
+        else:
+            yield i
 
 print("\nПростые числа до n:", end=' ')
 for num in prime_numbers(10):
@@ -200,8 +203,8 @@ for num in cumulative_sum([1, 2, 3, 4]):
 #ex15
 def read_csv_lines(filename):
     with open(filename, 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
+        table = csv.reader(file)
+        for row in table:
             yield row
 
 print("\nФайл: test.csv")
