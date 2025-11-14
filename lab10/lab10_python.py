@@ -26,7 +26,7 @@ def histograms():
     plt.figure(figsize=(10, 6))
     random_data = np.random.normal(0, 1, 10000)
     plt.hist(random_data, bins=30, alpha=0.7, color='blue', edgecolor='black')
-    plt.title('Гистограмма распределения случайных чисел')
+    plt.title('Гистограмма распределения случайных чисел (задание 4)')
     plt.xlabel('Значения')
     plt.ylabel('Частота')
     plt.grid(True, alpha=0.3)
@@ -38,7 +38,7 @@ def chart():
     x = np.linspace(-10, 10, 100)
     y = x**2
     plt.plot(x, y, 'r-', linewidth=2)
-    plt.title('y = x^2')
+    plt.title('y = x^2 (задание 5)')
     plt.xlabel('x')
     plt.ylabel('y')
     plt.grid(True)
@@ -68,6 +68,7 @@ def curves():
     plt.plot(x, y2, label='cos(x)', linewidth=2)
     plt.plot(x, y3, label='sin(x)*cos(x)', linewidth=2)
 
+    plt.title('График с несколькими кривыми (задание 8)')
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()
@@ -87,6 +88,7 @@ def scatterplot():
     x_scatter = np.random.normal(0, 1, 100)
     y_scatter = np.random.normal(0, 1, 100) + 0.5 * x_scatter + np.random.normal(0, 0.3, 100)
 
+    plt.title('Диаграмма рассеяния для случайного набора данных (задание 10)')
     plt.scatter(x_scatter, y_scatter, alpha=0.6, c='green', edgecolors='black')
     plt.xlabel('X значения')
     plt.ylabel('Y значения')
@@ -100,6 +102,8 @@ mean_median_deviation(data)
 csv("data.csv")
 
 histograms()
+
+chart()
 
 df1 = pd.DataFrame({
     'ID': [1, 2, 3, 4],
